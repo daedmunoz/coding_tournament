@@ -1,0 +1,81 @@
+<div class="header">
+  DELIKTUM
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-9">
+      <div class="map-content">
+        <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+          <ng-container *ngIf="eventSelected">
+            <agm-marker [latitude]="eventSelected.location.latitude" [longitude]="eventSelected.location.longitude">
+              <agm-info-window>
+                <div class="event-title  mb-1">
+                  {{eventTypesAsObject[eventSelected.type] ? eventTypesAsObject[eventSelected.type].name : ''}}
+                </div>
+                <div>
+                  {{eventSelected.description}}
+                </div>
+                <div>
+                  {{eventSelected.image}}
+                </div>
+              </agm-info-window>
+            </agm-marker>
+          </ng-container>
+          <ng-container *ngIf="!eventSelected">
+            <ng-container *ngIf="!createNewEvent">
+              <agm-marker *ngFor="let event of events" [latitude]="event.location.latitude" [longitude]="event.location.longitude">
+                <agm-info-window>
+                  <div class="event-title mb-1">
+                    {{eventTypesAsObject[event.type] ? eventTypesAsObject[event.type].name : ''}}
+                  </div>
+                  <div>
+                    {{event.description}}
+                  </div>
+                  <div>
+                    {{event.image}}
+                  </div>
+                </agm-info-window>
+              </agm-marker>
+            </ng-container>
+          </ng-container>
+          <ng-container>
+            <ng-container *ngIf="createNewEvent">
+              <agm-marker [latitude]="locationOfNewEvent.latitude" [longitude]="locationOfNewEvent.longitude">
+              </agm-marker>
+            </ng-container>
+          </ng-container>
+        </agm-map>
+      </div>
+
+    </div>
+    <div class="col-3">
+      <div class="options-content">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="showNewEventForm($event)" (closed)="hideNewEventForm($event)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{'register' | translate}}
+              </mat-panel-title>
+              <mat-panel-description>
+
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+              <app-event-form *ngIf="createNewEvent" [(form)]="form" (onSave)="onEventSave($event)" (onCancel)="onEventSaveCancel($event)"></app-event-form>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="onOpenFiltersPanel($event)" (closed)="onCloseFiltersPanel($event)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{'filterEvents' | translate}}
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-events-filter *ngIf="filtersPanelOpened" (onEventSelected)="onEventSelected($event)"></app-events-filter>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

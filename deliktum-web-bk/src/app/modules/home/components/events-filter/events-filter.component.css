@@ -1,0 +1,17 @@
+.load-more {
+    height: 5em;    
+}
+
+.list-container {
+    height: 15rem;
+    overflow: auto;    
+}
+
+.list-container mat-list-item {    
+    font-size: 0.8em;
+}
+
+.list-item-event-title {
+    font-weight: bold;    
+
+}

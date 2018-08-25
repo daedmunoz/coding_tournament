@@ -1,0 +1,23 @@
+.header {
+    height: 10vh;
+}
+.map-content {        
+    height: 80vh;
+    width: 100%;
+}
+
+
+.options-content {
+    width: 20vw;
+    height: 80vh;
+    padding: 0.5em;
+    /* background-color: #563999; */
+}
+
+agm-map {
+    height: 100%;
+}
+
+.event-title {
+    font-weight: bold;
+}

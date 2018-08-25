@@ -1,0 +1,41 @@
+<form [formGroup]="form" class="mt-2">
+  <mat-form-field class="full-width ">
+    <mat-select placeholder="{{'type' | translate}}" formControlName="type">
+      <mat-option value="all">
+        {{'all'| translate}}
+      </mat-option>
+      <mat-option *ngFor="let type of eventTypes" [value]="type['_id']">
+        {{type.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width ">
+    <mat-select placeholder="{{'period' | translate}}" formControlName="period">
+      <mat-option *ngFor="let period of periodFilters" [value]="period.id">
+        {{period.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="full-width mb-5">
+    <button class="float-right" mat-flat-button (click)="filter()">{{'filter' | translate}}</button>
+    <!-- <button class="float-right mr-1" mat-flat-button (click)="cancel()">{{'cancel' | translate}}</button> -->
+  </div>
+</form>
+<div class="full-with">
+  <div class="full-width load-more" *ngIf="events.length > 0 && totalEvents > events.length">
+    <button mat-button class="full-width" (click)="loadNextEvents()">{{'loadMore' | translate}}</button>
+  </div>
+  <div class="list-container">
+    <mat-list role="list" style="max-height: 50px;">
+      <mat-list-item role="listitem" class="clickable" *ngFor="let event of events" (click)="selectEvent(event)">
+        <div class="list-item-event-title" matLine>{{eventTypesAsObject[event.type] ? eventTypesAsObject[event.type].name : ''}}</div>
+        <div matLine>
+          {{event.description}}
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

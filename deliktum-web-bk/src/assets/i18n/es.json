@@ -1,0 +1,19 @@
+{
+    "register": "Registrar",
+    "save": "Guardar",
+    "description": "Descripci\u00F3n",
+    "dateTime": "Fecha y hora",
+    "type": "Tipo",
+    "cancel": "Cancelar",
+    "location": "Localizaci\u00F3n",
+    "clickOnMapToGetLocation": "D\u00E9 click sobre el mapa para especificar la localizaci\u00F3n del evento",
+    "filterEvents": "Filtrar eventos",
+    "all": "Todos/as",
+    "last-week": "Semana pasada",
+    "last-month": "Mes pasada",
+    "last-year": "A\u00F1o pasado",
+    "today": "Hoy",
+    "loadMore": "Cargar m\u00E1s",
+    "filter": "Filtrar",
+    "period": "Periodo"
+}

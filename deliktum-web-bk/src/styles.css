@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+body {
+    /* background-color: #563354;
+    color: aliceblue; */
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-list-item:hover {
+    background: #cecece;
+    transition: 'background' 0.5s;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+}
+mat-list {
+    /* height: 200px; */
+    /* flex-grow: 1; */
+    /* border: 3px solid green; */
+    /* overflow: auto; */
+}

@@ -84,25 +84,6 @@ export class EventController {
         });
     }
 
-    private getMinDateToFilter(period: string) {
-        if (!period) {
-            return null;
-        }
-        const now = moment();
-        switch (period) {
-            case 'all':
-                return null;
-            case 'last-week':
-                return now.subtract(1, 'weeks').format();
-            case 'last-month':
-                return now.subtract(1, 'months').format();
-            case 'last-year':
-                return now.subtract(1, 'years').format();
-            default:
-                return null;
-        }
-    }
-
     public getEventWithID(req: Request, res: Response) {
         mongoEvent.findById(req.params.eventId, (err, event) => {
             if (err) {
